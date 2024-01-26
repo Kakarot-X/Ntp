@@ -11,26 +11,15 @@
 
 #define NTP_TIMESTAMP_DELTA 2208988800ull
 
-
-
-
-
-
-
-
 int main(){
 
 char *host_name="us.pool.ntp.org";
-
-
+  
 typedef struct
 {
 
   uint8_t leapI_versionN_mode;      // 8 bits. leap indicater, version number, and mode.
-                        
-                         
-                          
-
+  
   uint8_t stratum;      
   uint8_t poll;          
   uint8_t precision;      
@@ -55,7 +44,7 @@ typedef struct
 
 NTP_PACKET packet = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 
-*((char *) &packet) =0x1b; //
+*((char *) &packet) =0x1b; // Set the first byte's bits to 00,011,011 for li = 0, vn = 3, and mode = 3. The rest will be left set to zero.
 
 
 struct sockaddr_in serv_addr;//server address data structure
